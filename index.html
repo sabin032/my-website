@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Sabin Kasula — Electrical Engineer & Lecturer</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --black: #111110;
+    --white: #faf9f7;
+    --gray: #888884;
+    --light: #f0ede8;
+    --accent: #1a3a5c;
+    --border: #dedad4;
+    --mono: 'DM Mono', monospace;
+    --serif: 'Lora', serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--white);
+    color: var(--black);
+    font-family: var(--serif);
+    font-size: 16px;
+    line-height: 1.75;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 0 5vw;
+    height: 56px;
+  }
+  .nav-name {
+    font-family: var(--mono); font-size: 13px; font-weight: 500;
+    letter-spacing: 0.06em; color: var(--black); text-decoration: none;
+  }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.06em;
+    text-transform: uppercase; color: var(--gray); text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--black); }
+
+  /* ── LAYOUT ── */
+  .container { max-width: 860px; margin: 0 auto; padding: 0 5vw; }
+
+  section { padding: 80px 0; border-bottom: 1px solid var(--border); }
+  section:last-child { border-bottom: none; }
+
+  .section-label {
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--gray); margin-bottom: 2.5rem;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .section-label::after {
+    content: ''; flex: 1; height: 1px; background: var(--border);
+  }
+
+  /* ── HERO ── */
+  #hero { padding-top: 140px; padding-bottom: 80px; }
+  .hero-inner { display: grid; grid-template-columns: 1fr 340px; gap: 4rem; align-items: start; }
+  .hero-tag {
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--gray); margin-bottom: 1.5rem;
+  }
+  .hero-name {
+    font-size: clamp(2.4rem, 5vw, 3.5rem); font-weight: 400;
+    line-height: 1.1; margin-bottom: 1.5rem; letter-spacing: -0.02em;
+  }
+  .hero-name em { font-style: italic; color: var(--gray); }
+  .hero-bio {
+    font-size: 1rem; color: #444; line-height: 1.8;
+    margin-bottom: 2rem; max-width: 480px;
+  }
+  .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+  .btn {
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.06em;
+    text-transform: uppercase; padding: 10px 22px; border-radius: 3px;
+    cursor: pointer; text-decoration: none; transition: all 0.2s;
+    display: inline-block;
+  }
+  .btn-solid {
+    background: var(--black); color: var(--white); border: 1px solid var(--black);
+  }
+  .btn-solid:hover { background: var(--accent); border-color: var(--accent); }
+  .btn-outline {
+    background: transparent; color: var(--black); border: 1px solid var(--border);
+  }
+  .btn-outline:hover { border-color: var(--black); }
+
+  /* Hero stats */
+  .hero-stats { display: flex; flex-direction: column; gap: 0; }
+  .stat-item {
+    padding: 1.25rem 0; border-bottom: 1px solid var(--border);
+    display: flex; flex-direction: column; gap: 4px;
+  }
+  .stat-item:first-child { border-top: 1px solid var(--border); }
+  .stat-num {
+    font-family: var(--mono); font-size: 1.6rem; font-weight: 500; color: var(--black);
+  }
+  .stat-label {
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.06em;
+    text-transform: uppercase; color: var(--gray);
+  }
+
+  /* ── RESEARCH ── */
+  .research-grid { display: flex; flex-direction: column; gap: 0; }
+  .research-item {
+    display: grid; grid-template-columns: 80px 1fr auto;
+    gap: 1.5rem; align-items: start;
+    padding: 1.75rem 0; border-bottom: 1px solid var(--border);
+  }
+  .research-item:last-child { border-bottom: none; }
+  .research-status {
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.06em;
+    text-transform: uppercase; padding: 4px 8px; border-radius: 2px;
+    text-align: center; margin-top: 4px;
+  }
+  .status-published { background: #e8f0e8; color: #2a5a2a; }
+  .status-accepted { background: #fff3e0; color: #7a4a00; }
+  .status-ongoing { background: #e8eef8; color: #1a3a5c; }
+  .research-title { font-size: 0.95rem; font-weight: 500; line-height: 1.45; margin-bottom: 0.4rem; }
+  .research-venue {
+    font-family: var(--mono); font-size: 11px; color: var(--gray);
+    letter-spacing: 0.03em;
+  }
+  .research-authors { font-size: 0.85rem; color: #666; margin-top: 4px; }
+  .research-year {
+    font-family: var(--mono); font-size: 12px; color: var(--gray);
+    white-space: nowrap; margin-top: 4px;
+  }
+
+  /* ── TEACHING ── */
+  .teaching-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); }
+  .teaching-card {
+    background: var(--white); padding: 1.5rem;
+    transition: background 0.2s;
+  }
+  .teaching-card:hover { background: var(--light); }
+  .teaching-institution {
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.06em;
+    text-transform: uppercase; color: var(--gray); margin-bottom: 0.5rem;
+  }
+  .teaching-period {
+    font-family: var(--mono); font-size: 11px; color: var(--gray); margin-bottom: 1rem;
+  }
+  .teaching-subjects { list-style: none; display: flex; flex-direction: column; gap: 4px; }
+  .teaching-subjects li {
+    font-size: 0.875rem; color: #444; padding-left: 1rem; position: relative;
+  }
+  .teaching-subjects li::before {
+    content: '–'; position: absolute; left: 0; color: var(--gray);
+  }
+
+  /* ── ABOUT ── */
+  .about-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; }
+  .about-block h3 {
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--gray); margin-bottom: 1rem;
+  }
+  .about-block p { font-size: 0.9rem; color: #444; line-height: 1.8; }
+  .tag-list { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 1rem; }
+  .tag {
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.05em;
+    padding: 5px 11px; border: 1px solid var(--border); border-radius: 2px;
+    color: var(--gray); text-transform: uppercase;
+  }
+  .skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.4rem; }
+  .skill-item {
+    font-family: var(--mono); font-size: 12px; color: #555;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .skill-item::before { content: '›'; color: var(--gray); }
+
+  /* ── CONTACT ── */
+  #contact { border-bottom: none; }
+  .contact-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+  .contact-headline {
+    font-size: 1.8rem; font-weight: 400; line-height: 1.3;
+    margin-bottom: 1rem;
+  }
+  .contact-headline em { font-style: italic; color: var(--gray); }
+  .contact-note { font-size: 0.9rem; color: #666; line-height: 1.7; margin-bottom: 1.5rem; }
+  .contact-links { display: flex; flex-direction: column; gap: 0; }
+  .contact-link {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 0.9rem 0; border-bottom: 1px solid var(--border);
+    text-decoration: none; color: var(--black);
+    transition: padding-left 0.2s;
+  }
+  .contact-link:first-child { border-top: 1px solid var(--border); }
+  .contact-link:hover { padding-left: 8px; color: var(--accent); }
+  .contact-link-label { font-size: 0.9rem; }
+  .contact-link-value {
+    font-family: var(--mono); font-size: 11px; color: var(--gray);
+  }
+  .contact-link:hover .contact-link-value { color: var(--accent); }
+
+  /* ── FOOTER ── */
+  footer {
+    padding: 2rem 5vw; border-top: 1px solid var(--border);
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .footer-name { font-family: var(--mono); font-size: 12px; color: var(--gray); }
+  .footer-nec { font-family: var(--mono); font-size: 11px; color: var(--gray); }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .hero-tag   { animation: fadeUp 0.6s ease both; }
+  .hero-name  { animation: fadeUp 0.6s 0.1s ease both; }
+  .hero-bio   { animation: fadeUp 0.6s 0.2s ease both; }
+  .hero-actions { animation: fadeUp 0.6s 0.3s ease both; }
+  .hero-stats { animation: fadeUp 0.6s 0.15s ease both; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 680px) {
+    .hero-inner, .about-inner, .contact-inner { grid-template-columns: 1fr; }
+    .teaching-grid { grid-template-columns: 1fr; }
+    .research-item { grid-template-columns: 1fr; gap: 0.5rem; }
+    .research-year { display: none; }
+    nav { padding: 0 1.25rem; }
+    .nav-links { gap: 1rem; }
+    .nav-links a { font-size: 10px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-name">Sabin Kasula</a>
+  <ul class="nav-links">
+    <li><a href="#research">Research</a></li>
+    <li><a href="#teaching">Teaching</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="container">
+    <div class="hero-inner">
+      <div>
+        <p class="hero-tag">Lecturer · Electrical Engineer · Bhaktapur, Nepal</p>
+        <h1 class="hero-name">Sabin<br>Kasula<em>.</em></h1>
+        <p class="hero-bio">
+          Lecturer in Electrical Engineering at Khwopa College of Engineering, Tribhuvan University.
+          I teach power electronics, electrical machines, and control systems — and research how
+          smarter motor control and power quality can make electrical systems work better for everyone.
+          Currently pursuing MSc in Power Electronics and Drive Engineering at Pulchowk Campus.
+        </p>
+        <div class="hero-actions">
+          <a href="#research" class="btn btn-solid">View Research</a>
+          <a href="#contact" class="btn btn-outline">Get in Touch</a>
+        </div>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-item">
+          <span class="stat-num">3+</span>
+          <span class="stat-label">Years Teaching</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">3</span>
+          <span class="stat-label">Research Papers</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">4</span>
+          <span class="stat-label">Institutions</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">MSc</span>
+          <span class="stat-label">Running · Pulchowk Campus</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESEARCH -->
+<section id="research">
+  <div class="container">
+    <p class="section-label">Research</p>
+    <div class="research-grid">
+
+      <div class="research-item">
+        <span class="research-status status-published">Published</span>
+        <div>
+          <p class="research-title">Implementation of Indirect Field Oriented Control Using Space Vector Pulse Width Modulation for the Control of Induction Motor</p>
+          <p class="research-venue">International Journal on Engineering Technology, Vol. 1(1), pp. 139–152</p>
+          <p class="research-authors">Kasula, S., Shrestha, B., Katwal, K., &amp; Dahal, R.</p>
+        </div>
+        <span class="research-year">2023</span>
+      </div>
+
+      <div class="research-item">
+        <span class="research-status status-accepted">Accepted</span>
+        <div>
+          <p class="research-title">Modeling and Optimization of Separately Excited DC Motor Using Genetic Algorithm and Particle Swarm Optimization with Comparison of PID Performance Indices</p>
+          <p class="research-venue">International Journal on Power Electronics · Inderscience</p>
+          <p class="research-authors">Sabin Kasula, Dr. Rajesh M. Pindoriya</p>
+        </div>
+        <span class="research-year">Forthcoming</span>
+      </div>
+
+      <div class="research-item">
+        <span class="research-status status-accepted">Accepted</span>
+        <div>
+          <p class="research-title">PQ Theory-Based Modeling and Simulation of a Shunt Active Power Filter for Improving Power Quality</p>
+          <p class="research-venue">Journal of Science and Engineering · NepJol</p>
+          <p class="research-authors">Sabin Kasula</p>
+        </div>
+        <span class="research-year">Forthcoming</span>
+      </div>
+
+      <div class="research-item">
+        <span class="research-status status-ongoing">MSc Thesis</span>
+        <div>
+          <p class="research-title">Advanced research in Power Electronics, Drive Systems, and Renewable Energy Modelling</p>
+          <p class="research-venue">Pulchowk Campus, Tribhuvan University</p>
+          <p class="research-authors">Dept. topper — 1st &amp; 2nd Semester (85.75% / 84.75%)</p>
+        </div>
+        <span class="research-year">2024 →</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- TEACHING -->
+<section id="teaching">
+  <div class="container">
+    <p class="section-label">Teaching Experience</p>
+    <div class="teaching-grid">
+
+      <div class="teaching-card">
+        <p class="teaching-institution">Khwopa College of Engineering · TU</p>
+        <p class="teaching-period">April 2025 – Present &nbsp;·&nbsp; Lecturer</p>
+        <ul class="teaching-subjects">
+          <li>Power Electronics</li>
+          <li>Electrical Circuit and Machines</li>
+          <li>Advanced Power System</li>
+        </ul>
+      </div>
+
+      <div class="teaching-card">
+        <p class="teaching-institution">Kantipur Engineering College · TU</p>
+        <p class="teaching-period">Dec 2021 – April 2025 &nbsp;·&nbsp; Lecturer</p>
+        <ul class="teaching-subjects">
+          <li>Control System</li>
+          <li>Electrical Circuit and Machines</li>
+          <li>Basic Electrical Engineering</li>
+          <li>Fundamentals of Electrical &amp; Electronics Eng.</li>
+          <li>Practical lab lead for all subjects</li>
+        </ul>
+      </div>
+
+      <div class="teaching-card">
+        <p class="teaching-institution">Kantipur Valley College · Purbanchwal University</p>
+        <p class="teaching-period">Jan 2024 &nbsp;·&nbsp; Visiting Lecturer (Part-time)</p>
+        <ul class="teaching-subjects">
+          <li>Electrical Engineering</li>
+        </ul>
+      </div>
+
+      <div class="teaching-card">
+        <p class="teaching-institution">National College of Engineering · TU</p>
+        <p class="teaching-period">April 2023 &nbsp;·&nbsp; Visiting Lecturer (Part-time)</p>
+        <ul class="teaching-subjects">
+          <li>Electrical Circuit and Machines</li>
+          <li>External Examiner across Kathmandu Valley colleges</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <p class="section-label">About</p>
+    <div class="about-inner">
+      <div>
+        <div class="about-block" style="margin-bottom:2.5rem;">
+          <h3>Background</h3>
+          <p>
+            I grew up in Bhaktapur and completed my Bachelor of Engineering in Electrical Engineering
+            at Khwopa College of Engineering (Top 5 of class, 75.62%). I began teaching almost
+            immediately after graduation — a path that has deepened my understanding of both
+            engineering fundamentals and how to communicate complex ideas clearly.
+            I am a registered engineer with the Nepal Engineering Council (NEC Reg. No. 3032 Electrical 'A')
+            and a member of the Nepal Engineer's Association.
+          </p>
+        </div>
+        <div class="about-block">
+          <h3>Core Research Interests</h3>
+          <div class="tag-list">
+            <span class="tag">Power Quality &amp; Harmonics</span>
+            <span class="tag">Power Electronics</span>
+            <span class="tag">Electrical Drives</span>
+            <span class="tag">Control Systems</span>
+            <span class="tag">Multilevel Inverters</span>
+            <span class="tag">Electrical Machines</span>
+            <span class="tag">Renewable Energy</span>
+            <span class="tag">Active Power Filters</span>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="about-block" style="margin-bottom:2.5rem;">
+          <h3>Software &amp; Tools</h3>
+          <div class="skills-grid">
+            <span class="skill-item">MATLAB Simulink</span>
+            <span class="skill-item">PLECS</span>
+            <span class="skill-item">Typhoon HIL</span>
+            <span class="skill-item">Multisim</span>
+            <span class="skill-item">Proteus</span>
+            <span class="skill-item">Python</span>
+            <span class="skill-item">Arduino IDE</span>
+            <span class="skill-item">AutoCAD</span>
+            <span class="skill-item">LaTeX</span>
+            <span class="skill-item">Adobe Photoshop</span>
+          </div>
+        </div>
+        <div class="about-block">
+          <h3>Education</h3>
+          <p style="margin-bottom:0.75rem;">
+            <strong style="font-weight:500;">MSc Power Electronics &amp; Drive Engineering</strong><br>
+            <span style="font-size:0.85rem;color:#666;">Pulchowk Campus, TU — Running (2024)</span>
+          </p>
+          <p>
+            <strong style="font-weight:500;">BE Electrical Engineering</strong><br>
+            <span style="font-size:0.85rem;color:#666;">Khwopa College of Engineering, TU — 2021</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <p class="section-label">Contact</p>
+    <div class="contact-inner">
+      <div>
+        <h2 class="contact-headline">Let's talk about <em>circuits, research,<br>or collaboration.</em></h2>
+        <p class="contact-note">
+          Whether you're a student with a question, a fellow researcher, a journal editor,
+          or an institution looking for collaboration — feel free to reach out.
+          I am also available for external examination and project supervision.
+        </p>
+        <a href="mailto:sabinkasula32@gmail.com" class="btn btn-solid">Send an Email</a>
+      </div>
+      <div class="contact-links">
+        <a href="mailto:sabinkasula32@gmail.com" class="contact-link">
+          <span class="contact-link-label">Personal Email</span>
+          <span class="contact-link-value">sabinkasula32@gmail.com</span>
+        </a>
+        <a href="mailto:kasula.sabin@khwopa.edu.np" class="contact-link">
+          <span class="contact-link-label">Institutional Email</span>
+          <span class="contact-link-value">kasula.sabin@khwopa.edu.np</span>
+        </a>
+        <a href="tel:+9779849749272" class="contact-link">
+          <span class="contact-link-label">Phone</span>
+          <span class="contact-link-value">+977-9849749272</span>
+        </a>
+        <a href="#" class="contact-link">
+          <span class="contact-link-label">ResearchGate</span>
+          <span class="contact-link-value">sabin-kasula</span>
+        </a>
+        <a href="#" class="contact-link">
+          <span class="contact-link-label">Google Scholar</span>
+          <span class="contact-link-value">Sabin Kasula</span>
+        </a>
+        <div class="contact-link" style="cursor:default;">
+          <span class="contact-link-label">Location</span>
+          <span class="contact-link-value">Changunarayan 02, Bhaktapur</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-name">© 2025 Sabin Kasula</span>
+  <span class="footer-nec">NEC Reg. No. 3032 Electrical 'A' &nbsp;·&nbsp; Member, NEA</span>
+</footer>
+
+</body>
+</html>
