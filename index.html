@@ -29,12 +29,13 @@
     line-height: 1.75;
   }
 
+  /* ── NAV ── */
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
     background: var(--white);
     border-bottom: 1px solid var(--border);
     display: flex; justify-content: space-between; align-items: center;
-    padding: 0 5vw;
+    padding: 0 4vw;
     height: 56px;
   }
   .nav-name {
@@ -49,7 +50,8 @@
   }
   .nav-links a:hover { color: var(--black); }
 
-  .container { max-width: 860px; margin: 0 auto; padding: 0 5vw; }
+  /* ── LAYOUT — full width ── */
+  .container { width: 100%; padding: 0 4vw; }
 
   section { padding: 80px 0; border-bottom: 1px solid var(--border); }
   section:last-child { border-bottom: none; }
@@ -63,20 +65,25 @@
     content: ''; flex: 1; height: 1px; background: var(--border);
   }
 
+  /* ── HERO ── */
   #hero { padding-top: 140px; padding-bottom: 80px; }
-  .hero-inner { display: grid; grid-template-columns: 1fr 340px; gap: 4rem; align-items: start; }
+  .hero-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4vw; align-items: start;
+  }
   .hero-tag {
     font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em;
     text-transform: uppercase; color: var(--gray); margin-bottom: 1.5rem;
   }
   .hero-name {
-    font-size: clamp(2.4rem, 5vw, 3.5rem); font-weight: 400;
-    line-height: 1.1; margin-bottom: 1.5rem; letter-spacing: -0.02em;
+    font-size: clamp(2.8rem, 5vw, 4.5rem); font-weight: 400;
+    line-height: 1.05; margin-bottom: 1.5rem; letter-spacing: -0.02em;
   }
   .hero-name em { font-style: italic; color: var(--gray); }
   .hero-bio {
     font-size: 1rem; color: #444; line-height: 1.8;
-    margin-bottom: 2rem; max-width: 480px;
+    margin-bottom: 2rem;
   }
   .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
   .btn {
@@ -85,78 +92,64 @@
     cursor: pointer; text-decoration: none; transition: all 0.2s;
     display: inline-block;
   }
-  .btn-solid {
-    background: var(--black); color: var(--white); border: 1px solid var(--black);
-  }
+  .btn-solid { background: var(--black); color: var(--white); border: 1px solid var(--black); }
   .btn-solid:hover { background: var(--accent); border-color: var(--accent); }
-  .btn-outline {
-    background: transparent; color: var(--black); border: 1px solid var(--border);
-  }
+  .btn-outline { background: transparent; color: var(--black); border: 1px solid var(--border); }
   .btn-outline:hover { border-color: var(--black); }
 
-  .hero-stats { display: flex; flex-direction: column; gap: 0; }
+  /* Hero stats — 4 columns on right side */
+  .hero-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); }
   .stat-item {
-    padding: 1.25rem 0; border-bottom: 1px solid var(--border);
+    background: var(--white);
+    padding: 1.5rem 1.25rem;
     display: flex; flex-direction: column; gap: 4px;
   }
-  .stat-item:first-child { border-top: 1px solid var(--border); }
-  .stat-num {
-    font-family: var(--mono); font-size: 1.6rem; font-weight: 500; color: var(--black);
-  }
+  .stat-num { font-family: var(--mono); font-size: 2rem; font-weight: 500; color: var(--black); }
   .stat-label {
     font-family: var(--mono); font-size: 11px; letter-spacing: 0.06em;
     text-transform: uppercase; color: var(--gray);
   }
 
+  /* ── RESEARCH ── */
   .research-grid { display: flex; flex-direction: column; gap: 0; }
   .research-item {
-    display: grid; grid-template-columns: 80px 1fr auto;
-    gap: 1.5rem; align-items: start;
+    display: grid; grid-template-columns: 90px 1fr auto;
+    gap: 2rem; align-items: start;
     padding: 1.75rem 0; border-bottom: 1px solid var(--border);
   }
   .research-item:last-child { border-bottom: none; }
   .research-status {
     font-family: var(--mono); font-size: 10px; letter-spacing: 0.06em;
     text-transform: uppercase; padding: 4px 8px; border-radius: 2px;
-    text-align: center; margin-top: 4px;
+    text-align: center; margin-top: 4px; white-space: nowrap;
   }
   .status-published { background: #e8f0e8; color: #2a5a2a; }
-  .status-accepted { background: #fff3e0; color: #7a4a00; }
-  .status-ongoing { background: #e8eef8; color: #1a3a5c; }
+  .status-accepted  { background: #fff3e0; color: #7a4a00; }
+  .status-ongoing   { background: #e8eef8; color: #1a3a5c; }
   .research-title { font-size: 0.95rem; font-weight: 500; line-height: 1.45; margin-bottom: 0.4rem; }
   .research-venue {
-    font-family: var(--mono); font-size: 11px; color: var(--gray);
-    letter-spacing: 0.03em;
+    font-family: var(--mono); font-size: 11px; color: var(--gray); letter-spacing: 0.03em;
   }
-  .research-venue a { color: var(--gray); }
+  .research-venue a { color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--border); }
+  .research-venue a:hover { border-color: var(--accent); }
   .research-authors { font-size: 0.85rem; color: #666; margin-top: 4px; }
-  .research-year {
-    font-family: var(--mono); font-size: 12px; color: var(--gray);
-    white-space: nowrap; margin-top: 4px;
-  }
+  .research-year { font-family: var(--mono); font-size: 12px; color: var(--gray); white-space: nowrap; margin-top: 4px; }
 
-  .teaching-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); }
-  .teaching-card {
-    background: var(--white); padding: 1.5rem;
-    transition: background 0.2s;
-  }
+  /* ── TEACHING ── */
+  .teaching-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--border); }
+  .teaching-card { background: var(--white); padding: 1.5rem; transition: background 0.2s; }
   .teaching-card:hover { background: var(--light); }
   .teaching-institution {
     font-family: var(--mono); font-size: 10px; letter-spacing: 0.06em;
     text-transform: uppercase; color: var(--gray); margin-bottom: 0.5rem;
   }
-  .teaching-period {
-    font-family: var(--mono); font-size: 11px; color: var(--gray); margin-bottom: 1rem;
-  }
+  .teaching-period { font-family: var(--mono); font-size: 11px; color: var(--gray); margin-bottom: 1rem; }
   .teaching-subjects { list-style: none; display: flex; flex-direction: column; gap: 4px; }
-  .teaching-subjects li {
-    font-size: 0.875rem; color: #444; padding-left: 1rem; position: relative;
-  }
-  .teaching-subjects li::before {
-    content: '–'; position: absolute; left: 0; color: var(--gray);
-  }
+  .teaching-subjects li { font-size: 0.875rem; color: #444; padding-left: 1rem; position: relative; }
+  .teaching-subjects li::before { content: '–'; position: absolute; left: 0; color: var(--gray); }
 
-  .about-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; }
+  /* ── ABOUT ── */
+  .about-inner { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 4vw; }
   .about-block h3 {
     font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em;
     text-transform: uppercase; color: var(--gray); margin-bottom: 1rem;
@@ -168,58 +161,58 @@
     padding: 5px 11px; border: 1px solid var(--border); border-radius: 2px;
     color: var(--gray); text-transform: uppercase;
   }
-  .skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.4rem; }
-  .skill-item {
-    font-family: var(--mono); font-size: 12px; color: #555;
-    display: flex; align-items: center; gap: 8px;
-  }
+  .skills-grid { display: grid; grid-template-columns: 1fr; gap: 0.4rem; }
+  .skill-item { font-family: var(--mono); font-size: 12px; color: #555; display: flex; align-items: center; gap: 8px; }
   .skill-item::before { content: '›'; color: var(--gray); }
 
+  /* ── CONTACT ── */
   #contact { border-bottom: none; }
-  .contact-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
-  .contact-headline {
-    font-size: 1.8rem; font-weight: 400; line-height: 1.3;
-    margin-bottom: 1rem;
-  }
+  .contact-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 6vw; align-items: start; }
+  .contact-headline { font-size: 2rem; font-weight: 400; line-height: 1.3; margin-bottom: 1rem; }
   .contact-headline em { font-style: italic; color: var(--gray); }
   .contact-note { font-size: 0.9rem; color: #666; line-height: 1.7; margin-bottom: 1.5rem; }
   .contact-links { display: flex; flex-direction: column; gap: 0; }
   .contact-link {
     display: flex; justify-content: space-between; align-items: center;
     padding: 0.9rem 0; border-bottom: 1px solid var(--border);
-    text-decoration: none; color: var(--black);
-    transition: padding-left 0.2s;
+    text-decoration: none; color: var(--black); transition: padding-left 0.2s;
   }
   .contact-link:first-child { border-top: 1px solid var(--border); }
   .contact-link:hover { padding-left: 8px; color: var(--accent); }
   .contact-link-label { font-size: 0.9rem; }
-  .contact-link-value {
-    font-family: var(--mono); font-size: 11px; color: var(--gray);
-  }
+  .contact-link-value { font-family: var(--mono); font-size: 11px; color: var(--gray); }
   .contact-link:hover .contact-link-value { color: var(--accent); }
 
+  /* ── FOOTER ── */
   footer {
-    padding: 2rem 5vw; border-top: 1px solid var(--border);
+    padding: 2rem 4vw; border-top: 1px solid var(--border);
     display: flex; justify-content: space-between; align-items: center;
   }
   .footer-name { font-family: var(--mono); font-size: 12px; color: var(--gray); }
-  .footer-nec { font-family: var(--mono); font-size: 11px; color: var(--gray); }
+  .footer-nec  { font-family: var(--mono); font-size: 11px; color: var(--gray); }
 
+  /* ── ANIMATIONS ── */
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(20px); }
     to   { opacity: 1; transform: translateY(0); }
   }
-  .hero-tag   { animation: fadeUp 0.6s ease both; }
-  .hero-name  { animation: fadeUp 0.6s 0.1s ease both; }
-  .hero-bio   { animation: fadeUp 0.6s 0.2s ease both; }
+  .hero-tag     { animation: fadeUp 0.6s ease both; }
+  .hero-name    { animation: fadeUp 0.6s 0.1s ease both; }
+  .hero-bio     { animation: fadeUp 0.6s 0.2s ease both; }
   .hero-actions { animation: fadeUp 0.6s 0.3s ease both; }
-  .hero-stats { animation: fadeUp 0.6s 0.15s ease both; }
+  .hero-stats   { animation: fadeUp 0.6s 0.15s ease both; }
 
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .teaching-grid { grid-template-columns: 1fr 1fr; }
+    .about-inner   { grid-template-columns: 1fr 1fr; }
+  }
   @media (max-width: 680px) {
     .hero-inner, .about-inner, .contact-inner { grid-template-columns: 1fr; }
     .teaching-grid { grid-template-columns: 1fr; }
     .research-item { grid-template-columns: 1fr; gap: 0.5rem; }
     .research-year { display: none; }
+    .hero-stats    { grid-template-columns: 1fr 1fr; }
     nav { padding: 0 1.25rem; }
     .nav-links { gap: 1rem; }
     .nav-links a { font-size: 10px; }
@@ -228,6 +221,7 @@
 </head>
 <body>
 
+<!-- NAV -->
 <nav>
   <a href="#hero" class="nav-name">Sabin Kasula</a>
   <ul class="nav-links">
@@ -238,6 +232,7 @@
   </ul>
 </nav>
 
+<!-- HERO -->
 <section id="hero">
   <div class="container">
     <div class="hero-inner">
@@ -270,13 +265,14 @@
         </div>
         <div class="stat-item">
           <span class="stat-num">MSc</span>
-          <span class="stat-label">Running · Pulchowk Campus</span>
+          <span class="stat-label">Running · Pulchowk</span>
         </div>
       </div>
     </div>
   </div>
 </section>
 
+<!-- RESEARCH -->
 <section id="research">
   <div class="container">
     <p class="section-label">Research</p>
@@ -286,7 +282,10 @@
         <span class="research-status status-published">Published</span>
         <div>
           <p class="research-title">Implementation of Indirect Field Oriented Control Using Space Vector Pulse Width Modulation for the Control of Induction Motor</p>
-          <p class="research-venue">International Journal on Engineering Technology, Vol. 1(1), pp. 139–152 · <a href="https://doi.org/10.3126/injet.v1i1.60936" target="_blank">DOI</a></p>
+          <p class="research-venue">
+            International Journal on Engineering Technology, Vol. 1(1), pp. 139–152 &nbsp;·&nbsp;
+            <a href="https://doi.org/10.3126/injet.v1i1.60936" target="_blank">https://doi.org/10.3126/injet.v1i1.60936</a>
+          </p>
           <p class="research-authors">Kasula, S., Shrestha, B., Katwal, K., &amp; Dahal, R.</p>
         </div>
         <span class="research-year">2023</span>
@@ -326,8 +325,8 @@
         <span class="research-status status-ongoing">MSc Thesis</span>
         <div>
           <p class="research-title">PQ Theory-Based Modelling and Simulation of a Shunt Active Power Filter for Improving Power Quality Using Optimized PI Controller</p>
-          <p class="research-venue">Pulchowk Campus, Tribhuvan University</p>
-          <p class="research-authors">Dept. of Electrical Engineering</p>
+          <p class="research-venue">Pulchowk Campus, Tribhuvan University · Dept. of Electrical Engineering</p>
+          <p class="research-authors">Supervised by Dept. of Electrical Engineering, Pulchowk Campus</p>
         </div>
         <span class="research-year">2024 →</span>
       </div>
@@ -336,6 +335,7 @@
   </div>
 </section>
 
+<!-- TEACHING -->
 <section id="teaching">
   <div class="container">
     <p class="section-label">Teaching Experience</p>
@@ -384,6 +384,7 @@
   </div>
 </section>
 
+<!-- ABOUT -->
 <section id="about">
   <div class="container">
     <p class="section-label">About</p>
@@ -414,38 +415,39 @@
           </div>
         </div>
       </div>
-      <div>
-        <div class="about-block" style="margin-bottom:2.5rem;">
-          <h3>Software &amp; Tools</h3>
-          <div class="skills-grid">
-            <span class="skill-item">MATLAB Simulink</span>
-            <span class="skill-item">PLECS</span>
-            <span class="skill-item">Typhoon HIL</span>
-            <span class="skill-item">Multisim</span>
-            <span class="skill-item">Proteus</span>
-            <span class="skill-item">Python</span>
-            <span class="skill-item">Arduino IDE</span>
-            <span class="skill-item">AutoCAD</span>
-            <span class="skill-item">LaTeX</span>
-            <span class="skill-item">Adobe Photoshop</span>
-          </div>
+      <div class="about-block">
+        <h3>Software &amp; Tools</h3>
+        <div class="skills-grid">
+          <span class="skill-item">MATLAB Simulink</span>
+          <span class="skill-item">PLECS</span>
+          <span class="skill-item">Typhoon HIL</span>
+          <span class="skill-item">Multisim</span>
+          <span class="skill-item">Proteus</span>
+          <span class="skill-item">Python</span>
+          <span class="skill-item">Arduino IDE</span>
+          <span class="skill-item">AutoCAD</span>
+          <span class="skill-item">LaTeX</span>
+          <span class="skill-item">Adobe Photoshop</span>
         </div>
-        <div class="about-block">
-          <h3>Education</h3>
-          <p style="margin-bottom:0.75rem;">
-            <strong style="font-weight:500;">MSc Power Electronics &amp; Drive Engineering</strong><br>
-            <span style="font-size:0.85rem;color:#666;">Pulchowk Campus, TU — Running (2024)</span>
-          </p>
-          <p>
-            <strong style="font-weight:500;">BE Electrical Engineering</strong><br>
-            <span style="font-size:0.85rem;color:#666;">Khwopa College of Engineering, TU — 2021</span>
-          </p>
-        </div>
+      </div>
+      <div class="about-block">
+        <h3>Education</h3>
+        <p style="margin-bottom:1rem;">
+          <strong style="font-weight:500;">MSc Power Electronics &amp; Drive Engineering</strong><br>
+          <span style="font-size:0.85rem;color:#666;">Pulchowk Campus, TU — Running (2024)</span><br>
+          <span style="font-size:0.82rem;color:#888;">1st &amp; 2nd Sem. Topper — 85.75% / 84.75%</span>
+        </p>
+        <p>
+          <strong style="font-weight:500;">BE Electrical Engineering</strong><br>
+          <span style="font-size:0.85rem;color:#666;">Khwopa College of Engineering, TU — 2021</span><br>
+          <span style="font-size:0.82rem;color:#888;">Top 5 of Class · 75.62%</span>
+        </p>
       </div>
     </div>
   </div>
 </section>
 
+<!-- CONTACT -->
 <section id="contact">
   <div class="container">
     <p class="section-label">Contact</p>
@@ -474,11 +476,11 @@
         </a>
         <a href="https://www.researchgate.net/profile/Sabin-Kasula?ev=hdr_xprf" target="_blank" class="contact-link">
           <span class="contact-link-label">ResearchGate</span>
-          <span class="contact-link-value">sabin-kasula</span>
+          <span class="contact-link-value">sabin-kasula →</span>
         </a>
         <a href="https://scholar.google.com/citations?user=IILcKUYAAAAJ&hl=en" target="_blank" class="contact-link">
           <span class="contact-link-label">Google Scholar</span>
-          <span class="contact-link-value">Sabin Kasula</span>
+          <span class="contact-link-value">Sabin Kasula →</span>
         </a>
         <div class="contact-link" style="cursor:default;">
           <span class="contact-link-label">Location</span>
@@ -489,6 +491,7 @@
   </div>
 </section>
 
+<!-- FOOTER -->
 <footer>
   <span class="footer-name">© 2025 Sabin Kasula</span>
   <span class="footer-nec">NEC Reg. No. 3032 Electrical 'A' &nbsp;·&nbsp; Member, NEA</span>
